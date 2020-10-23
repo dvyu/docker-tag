@@ -1,0 +1,22 @@
+name: Deploy prod settings
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+    - 'Settings/**'
+    
+jobs:
+  publish:
+    name: deploy settings 
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Build and publish Settings Server
+      uses: dvyu/Publish-Docker-Github-Action@master
+      with:
+        name: swisschains/settings-sirius-prod
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        workdir: ./Settings
+        # snapshot: true # use snapshot to push an additional image, which is tagged with {YEAR}{MONTH}{DAY}{HOUR}{MINUTE}{SECOND}{first 6 digits of the git sha}
