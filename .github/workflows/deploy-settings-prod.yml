@@ -33,6 +33,6 @@ jobs:
       uses: swisschain/kube-replace-pods@master
       env:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_TEST }}
-        YAML_FILE: Pods/Sirius/Settings/deployment.yaml 
+        YAML_FILE: Pods/Sirius/Settings/deployment.yaml
         BUILD_NUMBER_PREFIX: ${{ env.build_number_prefix }}
         BUILD_NUMBER: ${{ github.run_number }}
