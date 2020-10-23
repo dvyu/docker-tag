@@ -2,7 +2,7 @@ name: Deploy prod settings
 
 on:
   push:
-    branches: [ master ]
+    branches: [ test ]
     paths:
     - 'Settings/**'
     
