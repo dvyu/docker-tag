@@ -1,5 +1,8 @@
 name: Deploy prod settings
 
+env:
+  build_number_prefix: '1.0'
+
 on:
   push:
 #    tags: "service-*"
@@ -21,8 +24,15 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         workdir: ./Settings
-        build_number_prefix: "1.0"
+        build_number_prefix: ${{ env.build_number_prefix }}
         build_number: ${{ github.run_number }}
         #tag_names: true  
         #tag_name_skip: service-  
         # snapshot: true # use snapshot to push an additional image, which is tagged with {YEAR}{MONTH}{DAY}{HOUR}{MINUTE}{SECOND}{first 6 digits of the git sha}
+    - name: Update Settings Server
+      uses: swisschain/kube-replace-pods@master
+      env:
+        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_TEST }}
+        YAML_FILE: Pods/Sirius/Settings/deployment.yaml 
+        BUILD_NUMBER_PREFIX: ${{ env.build_number_prefix }}
+        BUILD_NUMBER: ${{ github.run_number }}
