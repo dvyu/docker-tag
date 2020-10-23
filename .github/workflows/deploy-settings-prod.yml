@@ -20,4 +20,5 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         workdir: ./Settings
         build_number_prefix: "1.0"
+        build_number: ${{ github.run_number }}
         # snapshot: true # use snapshot to push an additional image, which is tagged with {YEAR}{MONTH}{DAY}{HOUR}{MINUTE}{SECOND}{first 6 digits of the git sha}
