@@ -2,9 +2,10 @@ name: Deploy prod settings
 
 on:
   push:
-    branches: [ test ]
-    paths:
-    - 'Settings/**'
+    tags: "service-*"
+#    branches: [ test ]
+#    paths:
+#    - 'Settings/**'
     
 jobs:
   publish:
