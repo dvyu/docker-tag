@@ -34,5 +34,7 @@ jobs:
       env:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_TEST }}
         YAML_FILE: Pods/Sirius/Settings/deployment.yaml
+        GIT_USER: 'Github Swisschain'
+        GIT_EMAIL: github@swisschain.io
         BUILD_NUMBER_PREFIX: ${{ env.build_number_prefix }}
         BUILD_NUMBER: ${{ github.run_number }}
