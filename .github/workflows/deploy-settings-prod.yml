@@ -36,5 +36,7 @@ jobs:
         YAML_FILE: Pods/Sirius/Settings/deployment.yaml
         GIT_USER: 'Github Swisschain'
         GIT_EMAIL: github@swisschain.io
+        GIT_USER_SSH_KEY: ${{ secrets.GIT_USER_SSH_KEY }}
+        GIT_SSH_REPOSITRY: git@github.com:dvyu/docker-tag.git
         BUILD_NUMBER_PREFIX: ${{ env.build_number_prefix }}
         BUILD_NUMBER: ${{ github.run_number }}
